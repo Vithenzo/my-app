@@ -1,5 +1,4 @@
 import React from "react";
-import { Dimensions } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -31,12 +30,10 @@ const Navigator = () => {
   );
 };
 
-const { height } = Dimensions.get('window');
-
 const style = {
   headerStyle: {
     backgroundColor: "#3366FF",
-    height: (height / 100) * 13,
+    height: 100,
   },
   headerTitleStyle: {
     color: "#FFF",

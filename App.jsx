@@ -6,7 +6,7 @@ import Navigator from "./src/routes/Navigator";
 const App = () => {
   return (
     <>
-      <StatusBar style='light' backgroundColor='#003DCB' />
+      <StatusBar style='light' backgroundColor='#003DCB' translucent={false} />
       <Navigator />
     </>
   );

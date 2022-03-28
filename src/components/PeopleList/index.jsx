@@ -18,9 +18,9 @@ const PeopleList = ({ people, navigation }) => {
           onPress={() => navigation.navigate("PeopleDetails", { person })}
           key={login.uuid}
         >
-          <View style={styles.container}>
-            <Image source={{ uri: picture.thumbnail }} style={styles.photo} />
-            <Text style={styles.text}>{`${name.first} ${name.last}`}</Text>
+          <View style={style.container}>
+            <Image source={{ uri: picture.thumbnail }} style={style.photo} />
+            <Text style={style.text}>{`${name.first} ${name.last}`}</Text>
           </View>
         </TouchableHighlight>
       );
@@ -30,14 +30,14 @@ const PeopleList = ({ people, navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={style.loadingIndicatorContainer}>
       <ActivityIndicator size='large' color='#3366FF' />
       <Text style={{ color: '#212121' }}>Carregando...</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   photo: {
     aspectRatio: 1,
     marginLeft: 20,
@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "#E8EAFF",
+    backgroundColor: "#EEE",
     height: 100,
     borderWidth: 0.5,
-    borderColor: '#EEE',
+    borderColor: '#F4F4F4',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -57,8 +57,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
     flex: 5,
-    color: '#212121'
+    color: '#222'
   },
+  loadingIndicatorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export default PeopleList;

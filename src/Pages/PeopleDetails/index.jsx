@@ -20,7 +20,7 @@ const PeopleDetails = ({ route }) => {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#E8EAFF',
+    backgroundColor: '#EEE',
     flexGrow: 1
   },
   photo: {

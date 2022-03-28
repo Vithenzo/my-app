@@ -3,20 +3,25 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const DataLine = ({ label, data }) => (
   <View style={style.line}>
-    <Text style={style.text}>{label}</Text>
+    <Text style={style.label}>{label}</Text>
     <Text style={style.text}>{data}</Text>
   </View>
 );
 
 const style = StyleSheet.create({
   line: {
-    backgroundColor: '#E8EAFF',
+    backgroundColor: '#EEE',
     padding: 10,
     borderWidth: 0.5,
-    borderColor: '#F5F5F5',
+    borderColor: '#F4F4F4',
+  },
+  label: {
+    color: '#000',
+    fontSize: 16,
+    marginVertical: 5
   },
   text: {
-    color: '#212121',
+    color: '#797979',
   }
 });
 
