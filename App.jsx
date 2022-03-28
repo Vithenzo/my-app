@@ -1,8 +1,15 @@
 import React from "react";
+import { StatusBar } from 'expo-status-bar';
+
 import Navigator from "./src/routes/Navigator";
 
-function App() {
-  return <Navigator />;
-}
+const App = () => {
+  return (
+    <>
+      <StatusBar style='light' backgroundColor='#003DCB' />
+      <Navigator />
+    </>
+  );
+};
 
 export default App;

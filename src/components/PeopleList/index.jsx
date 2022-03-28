@@ -5,17 +5,17 @@ import {
   Image,
   StyleSheet,
   TouchableHighlight,
+  ActivityIndicator
 } from "react-native";
 
 const PeopleList = ({ people, navigation }) => {
   if (people.length !== 0) {
     const textElements = people.map((person) => {
       const { login, picture, name } = person;
+
       return (
         <TouchableHighlight
-          onPress={() => {
-            navigation.navigate("PeopleDetails", { person });
-          }}
+          onPress={() => navigation.navigate("PeopleDetails", { person })}
           key={login.uuid}
         >
           <View style={styles.container}>
@@ -29,7 +29,12 @@ const PeopleList = ({ people, navigation }) => {
     return <View>{textElements}</View>;
   }
 
-  return <Text style={styles.loading}>Carregando os dados...</Text>;
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator size='large' color='#3366FF' />
+      <Text style={{ color: '#212121' }}>Carregando...</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -40,10 +45,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "#E2F9FF",
-    height: 80,
-    borderBottomColor: "#bbb",
-    borderWidth: 1,
+    backgroundColor: "#E8EAFF",
+    height: 100,
+    borderWidth: 0.5,
+    borderColor: '#EEE',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -52,10 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 20,
     flex: 5,
-  },
-  loading: {
-    fontSize: 20,
-    color: "#F00",
+    color: '#212121'
   },
 });
 

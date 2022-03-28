@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
+import axios from 'axios';
 
 import PeopleList from "../../components/PeopleList";
-import usePeopleData from "../PeopleDetails/usePeopleData";
 
-export default function PeoplePage(props) {
-  const { navigation } = props;
-
+const PeoplePage = ({ navigation }) => {
   const [people, setPeople] = useState([]);
 
-  const response = usePeopleData(15);
-  setPeople(response);
+  const handleApiResponse = (response) => {
+    setPeople(response.data.results);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://randomuser.me/api/?results=15&nat=br`
+        );
+
+        handleApiResponse(response);
+      } catch (e) {
+        alert(e.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <ScrollView>
-      <View>
-        <PeopleList people={people} navigation={navigation} />
-      </View>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <PeopleList people={people} navigation={navigation} />
     </ScrollView>
   );
-}
+};
+
+export default PeoplePage;
