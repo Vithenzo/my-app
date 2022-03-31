@@ -1,39 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import { ScrollView, RefreshControl } from "react-native";
-import axios from 'axios';
 
 import PeopleList from "../../components/PeopleList";
+import usePeopleData from './usePeopleData';
 
 const PeoplePage = ({ navigation }) => {
-  const [people, setPeople] = useState([]);
-  const [refreshing, setRefreshing] = useState(false);
-
-  const handleApiResponse = (response) => {
-    setPeople(response.data.results);
-  };
-
-  const fetchPeopleData = async (records) => {
-    try {
-      const response = await axios.get(
-        `https://randomuser.me/api/?results=${records}&nat=br`
-      );
-
-      handleApiResponse(response);
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-
-    fetchPeopleData(20)
-      .finally(() => setRefreshing(false));
-  }, []);
-
-  useEffect(() => {
-    fetchPeopleData(20);
-  }, []);
+  const { people, refreshing, onRefresh } = usePeopleData();
 
   return (
     <ScrollView

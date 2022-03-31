@@ -10,8 +10,8 @@ const Navigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Pessoas" component={PeoplePage} options={style} />
+      <Stack.Navigator screenOptions={style}>
+        <Stack.Screen name="Pessoas" component={PeoplePage} />
         <Stack.Screen
           name="PeopleDetails"
           component={PeopleDetails}
@@ -20,8 +20,6 @@ const Navigator = () => {
 
             return {
               title: titlePage,
-              headerStyle: style.headerStyle,
-              headerTitleStyle: style.headerTitleStyle,
             };
           }}
         />
@@ -39,6 +37,7 @@ const style = {
     color: "#FFF",
     fontSize: 25,
   },
+  headerLeft: null
 };
 
 export default Navigator;
